@@ -1,13 +1,9 @@
-## Identifying Outliers  
+## Identifying Outliers
 This repository shows three statistical methods to spot outliers:
 * Tukey's Fences
 * Standard deviation method
 * Median Absolute Deviation
 
-testing a formula:
-<img src="http://latex.codecogs.com/gif.latex?3\sigma_m" border="0"/>
-
-Statistical functions to identify outliers
 
 ### Tukey's Fences:
 <img src="http://latex.codecogs.com/gif.latex?$F_1 = Q_1 - 1.5*(Q_3 - Q_1)$" border="0"/>
