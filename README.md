@@ -1,3 +1,5 @@
 # Outliers  
-testing a formula: $3\sigma_m$
+testing a formula:
+<img src="http://latex.codecogs.com/gif.latex?3\sigma_m" border="0"/>
+
 Statistical functions to identify outliers
