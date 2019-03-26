@@ -4,6 +4,8 @@ This repository shows three statistical methods to spot outliers:
 * Standard deviation method
 * Median Absolute Deviation
 
+These methods are very useful for univariables. In case your dataset has normally distributed data, Standard deviation and Tukey's Fences are good choices (specially the Standard deviation method in case your data is really normally distributed). Although nothings stops you from using the Media Absolute Deviation as well. However, in case your data is not normally distributed, it is more recommended the Median Absolute Deviation method because it avoids that the outliers themselves ruin the accuracy of the lower and upper limits.
+
 
 ### Tukey's Fences:
 <img src="http://latex.codecogs.com/gif.latex?$F_1 = Q_1 - 1.5*(Q_3 - Q_1)$" border="0"/>
@@ -49,11 +51,18 @@ Since the standard deviation method could be potentially affected by the outlier
 
 ````{r}
 MAbsDev <- function(dasetCol) {
+  dasetCol <- dasetCol[!is.na(dasetCol)]
   sigma_M <- median(abs(dasetCol-median(dasetCol)))
   low_M <- median(dasetCol) - 3*sigma_M*1.4826
   high_M <- median(dasetCol) + 3*sigma_M*1.4826
   Limits <- c(low_M, high_M)
-  return(Limits)
+  if (length(dasetCol[dasetCol<Limits[1]])==0 & length(dasetCol[dasetCol>Limits[2]])==0) {
+    return(paste("lower limit:", Limits[1], " upper limit:", Limits[2], "outliers: none"))
+  }
+  return(paste("lower limit:", Limits[1], " upper limit:", Limits[2],
+               "outliers:",
+               list(unique(sort(dasetCol[dasetCol<Limits[1]])),
+               unique(sort(dasetCol[dasetCol>Limits[2]])))))
 }
 ````
 Again using the built-in dataset iris in R:
