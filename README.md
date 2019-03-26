@@ -68,5 +68,5 @@ MAbsDev <- function(dasetCol) {
 Again using the built-in dataset iris in R:
 ````{r}
 iris <- datasets::iris
-MAbsDev(iris$Sepal.Length) #this results in 2.68654 and 8.91346
+MAbsDev(iris$Sepal.Length) #lower limit: 2.68654  upper limit: 8.91346 outliers: none
 ````
